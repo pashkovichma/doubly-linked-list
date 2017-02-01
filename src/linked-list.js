@@ -1,4 +1,11 @@
 const Node = require('./node');
+class Node {
+    constructor(data = null, prev = null, next = null) {
+        this.data = data;
+        this.prev = prev;
+        this.next = next;
+    }
+}
 
 class LinkedList {
     constructor() {
@@ -8,7 +15,7 @@ class LinkedList {
 
     append(data) {
           var node = {
-            value: data,
+            data: data,
             next: null,
             prev: null,
         }
@@ -31,18 +38,18 @@ class LinkedList {
         while (node.prev) {
             node = node.prev;
         }   
-        return node.value;
+        return node.data;
     }
 
     tail() {
-        return this.tail.value;
+        return this.tail.data;
     }
 
     at(index) {
         var node = this.tail;
         for (var i = this.length - 1; i > -1; i--) {
           if (i === index ) {
-               return node.value;
+               return node.data;
                break;
           }
             else {node = node.prev;}
@@ -88,12 +95,12 @@ class LinkedList {
                 i++;
             }
             while (i != this.length - 1) {
-                node.value = node.next.value;
+                node.data = node.next.data;
                 this.tail = node;
                 node = node.next;
                 i++;
             }
-            node.value = null;
+            node.data = null;
             node.next = null;
             this.length--;
             return this;
@@ -105,7 +112,7 @@ class LinkedList {
         this.tail = null;
         for (var i = this.length - 1; i > -1; i--) {
             var node = {
-              value: nodeReverse.value,
+              data: nodeReverse.data,
               next: null,
               prev: null,
             };
@@ -131,7 +138,7 @@ class LinkedList {
         }   
         var help = 0;
         for (var i = 0; i < this.length; i++) {
-          if (node.value === data ) {
+          if (node.data === data ) {
                return i;
                help = 1;
                break;
