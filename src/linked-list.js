@@ -6,13 +6,7 @@ class LinkedList {
   this.head = null;
   this.length = 0;}
 
-    append(data) {
-          var node = {
-            data: data,
-            next: null,
-            prev: null,
-        }
-         
+    append(data) {  
         if (this.length == 0) {
             this.tail = node;
             this.head = this.tail;
