@@ -1,47 +1,45 @@
 const Node = require('./node');
 
 class LinkedList {
-   function DoublyList() {
-    this._length = 0;
-    this.head = null;
-    this.tail = null;
-}
+    constructor() {
+  this.tail = null;
+  this.head = null;
+  this.length = 0;}
 
-
-    Double.prototype.append = function (data) {
-  var node = {
+    append(data) {
+          var node = {
             value: data,
             next: null,
             prev: null,
         }
          
         if (this.length == 0) {
-            this.tailOfList = node;
-            this.headOfList = this.tailOfList;
+            this.tail = node;
+            this.head = this.tail;
         }
         else {
-            this.tailOfList.next = node;
-            node.prev = this.tailOfList;
-            this.tailOfList = node;
+            this.tail.next = node;
+            node.prev = this.tail;
+            this.tail = node;
         }
         this.length++;
         return this;
-};
+    }
 
-   Double.prototype.head = function () {
-        var node = this.tailOfList;
+    head() {
+        var node = this.tail;
         while (node.prev) {
             node = node.prev;
         }   
-        return node.value;   
-};
+        return node.value;
+    }
 
-   Double.prototype.tail = function () {
-        return this.tailOfList.value;  
-};
+    tail() {
+        return this.tail.value;
+    }
 
-    Double.prototype.at = function (index) {
-        var node = this.tailOfList;
+    at(index) {
+        var node = this.tail;
         for (var i = this.length - 1; i > -1; i--) {
           if (i === index ) {
                return node.value;
@@ -49,16 +47,10 @@ class LinkedList {
           }
             else {node = node.prev;}
         }
-};
+    }
 
-    Double.prototype.insertAt = function  (index, data) {
-        var newNode = {
-            value: data,
-            next: null,
-            prev: null,
-        }
-
-        var node = this.tailOfList;
+    insertAt(index, data) {
+        var node = this.tail;
         for (var i = this.length - 1; i > -1; i--) {
           if (i === index - 1 ) {
             newNode.next = node.next;
@@ -71,17 +63,46 @@ class LinkedList {
         }
         this.length++;
         return this;
-};
+    }
 
-    isEmpty() {}
+    isEmpty() {
+        if (this.length==0) {
+        return trye;
+      } else {
+        return false;}
+    }
 
-    clear() {}
+    clear() {
+        head=null;
+        tail=null;
+        lengtn=0;
+    }
 
-    deleteAt(index) {}
+    deleteAt(index) {
+         if (index < this.length && index > -1) {
 
-    Double.prototype.reverse = function () {
-        var nodeReverse = this.tailOfList;
-        this.tailOfList = null;
+            var node = this.head;
+            var i = 0;
+            while (i < index) {
+                node = node.next;
+                i++;
+            }
+            while (i != this.length - 1) {
+                node.value = node.next.value;
+                this.tail = node;
+                node = node.next;
+                i++;
+            }
+            node.value = null;
+            node.next = null;
+            this.length--;
+            return this;
+        } 
+    }
+
+    reverse() {
+         var nodeReverse = this.tail;
+        this.tail = null;
         for (var i = this.length - 1; i > -1; i--) {
             var node = {
               value: nodeReverse.value,
@@ -90,23 +111,21 @@ class LinkedList {
             };
 
             if (i === this.length - 1) {
-              this.tailOfList = node;
-              // console.log(node.value);
+              this.tail = node;
               nodeReverse = nodeReverse.prev;
             }
             else {
-                this.tailOfList.next = node;
-                node.prev = this.tailOfList;
-                this.tailOfList = node;
-                // console.log(node.value);
+                this.tail.next = node;
+                node.prev = this.tail;
+                this.tail = node;
                 nodeReverse = nodeReverse.prev;
            }
         }
         return this;
-};
+    }
 
-    Double.prototype.indexOf = function (data) {
-        var node = this.tailOfList;
+    indexOf(data) {
+        var node = this.tail;
         while (node.prev) {
             node = node.prev;
         }   
@@ -122,8 +141,7 @@ class LinkedList {
         if (help === 0) {
            return -1;
         }    
-};
-
+    }
 }
 
 module.exports = LinkedList;
