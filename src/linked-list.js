@@ -6,7 +6,8 @@ class LinkedList {
   this.head = null;
   this.length = 0;}
 
-    append(data) {  
+    append(data) {
+    
         if (this.length == 0) {
             this.tail = node;
             this.head = this.tail;
