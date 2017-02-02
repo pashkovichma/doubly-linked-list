@@ -45,7 +45,8 @@ class LinkedList {
         }
      }
 
-      insertAt(index, data) {
+    insertAt(index, data) {
+        var newNode = new Node(data);
         var node = this._tail;
         for (var i = this.length - 1; i > -1; i--) {
           if (i === index - 1 ) {
@@ -69,9 +70,9 @@ class LinkedList {
     }
 
     clear() {
-        this._head=null;
-        this._tail=null;
-        this.lengtn=0;
+        this._head = null;
+        this._tail = null;
+        this.length = 0;
         return this;
     }
 
