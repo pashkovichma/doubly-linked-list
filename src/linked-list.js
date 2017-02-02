@@ -70,8 +70,12 @@ class LinkedList {
     }
 
     clear() {
-        this._head = null;
-        this._tail = null;
+        this._head.data = null;
+        this._head.prev = null;
+        this._head.next = null;
+        this._tail.data = null;
+        this._tail.prev = null;
+        this._tail.next = null;
         this.length = 0;
         return this;
     }
